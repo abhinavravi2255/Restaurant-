@@ -1,0 +1,57 @@
+{
+  "users": [
+    { "id": 1001, "email": "user1@gmail.com", "password": "Test@1234" },
+    { "id": 1002, "email": "user2@gmail.com", "password": "Test@1234" },
+    { "id": 1003, "email": "user3@gmail.com", "password": "Test@1234" },
+    { "id": 1004, "email": "user4@gmail.com", "password": "Test@1234" },
+    { "id": 1005, "email": "user5@gmail.com", "password": "Test@1234" }
+  ],
+  "resturants": [
+    {
+      "id": 2001,
+      "name": "Burger Hub",
+      "location": "Thrissur",
+      "members": [
+        { "userId": 1001, "role": "owner" },
+        { "userId": 1002, "role": "manager" },
+        { "userId": 1003, "role": "staff" }
+      ]
+    },
+    {
+      "id": 2002,
+      "name": "Pizza World",
+      "location": "Kochi",
+      "members": [
+        { "userId": 1001, "role": "owner" },
+        { "userId": 1004, "role": "manager" }
+      ]
+    },
+    {
+      "id": 2003,
+      "name": "Cafe Central",
+      "location": "Calicut",
+      "members": [
+        { "userId": 1001, "role": "owner" },
+        { "userId": 1005, "role": "manager" }
+      ]
+    },
+    {
+      "id": 2004,
+      "name": "Spice Garden",
+      "location": "Kannur",
+      "members": [
+        { "userId": 1002, "role": "owner" },
+        { "userId": 1003, "role": "staff" }
+      ]
+    },
+    {
+      "id": 2005,
+      "name": "Food Corner",
+      "location": "Palakkad",
+      "members": [
+        { "userId": 1003, "role": "owner" },
+        { "userId": 1004, "role": "staff" }
+      ]
+    }
+  ]
+}

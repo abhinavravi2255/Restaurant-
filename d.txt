@@ -1,0 +1,92 @@
+const readline = require("readline-sync");
+
+let restaurants = [];
+
+const line = () => {
+  console.log("----------------------");
+};
+
+const title = (title) => {
+  line();
+  console.log(`//-- ${title} --//`);
+  line();
+};
+
+const createResturant = () => {
+  let restaurant;
+  title("Create Resturant");
+
+  let id = readline.question("Enter id : ");
+  let name = readline.question("Enter name : ");
+  let location = readline.question("Enter location : ");
+
+  restaurant = restaurants.find((restaurant) => restaurant.id === id);
+
+  if (restaurant) {
+    return title("Resturant with this id already exists");
+  }
+
+  restaurant = { id: id, name: name, location: location };
+
+  restaurants.push(restaurant);
+
+  title("Resturant Created!");
+};
+
+const displayRestaurants = () => {
+  title("Display Resturants");
+
+  if (restaurants.length <= 0) return title("No Resturants Found!");
+
+  restaurants.forEach((restaurant) => {
+    console.log(`Resturant id : ${restaurant.id}`);
+    console.log(`Resturant name : ${restaurant.name}`);
+    console.log(`Resturant location : ${restaurant.location}`);
+
+    line();
+    line();
+  });
+};
+
+const RestaurantMenuOptions = () => {
+  console.log(
+    "\n\x1b[34m===== Multi Restaurant Management System =====\x1b[0m\n",
+  );
+
+  console.log("1. Create Resturant");
+  console.log("2. Display Resturant");
+  // console.log("3. Create Resturant");
+  // console.log("4. Create Resturant");
+};
+
+const handleMenuOptions = (choice) => {
+  switch (choice) {
+    case 1:
+      createResturant();
+      return;
+    case 2:
+      displayRestaurants();
+      return;
+    default:
+  }
+};
+
+
+const handleAuthMenuOptions = () =>{
+
+}
+
+
+function main() {
+  let choice;
+
+  do {
+    menuOptions();
+
+    choice = Number(readline.question("Enter your choice : "));
+
+    handleMenuOptions(choice);
+  } while (choice != 5);
+}
+
+main();
