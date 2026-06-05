@@ -1,5 +1,6 @@
 const readline = require("readline-sync");
 const fs = require("fs");
+const { log } = require("console");
 
 const line = (width = 30) => {
   console.log("-".repeat(width));
@@ -195,11 +196,22 @@ const switchResturant = (userId, resturants = []) => {
   });
 
   let choice = readline.questionInt("Select resturant : ");
-
-  space();
-  line();
-  space();
+  if (choice > userResturants.length) {
+    space();
+    console.log("invalid choice");
+    space();
+    return;
+  }
+  let currentUserResturant = userResturants[choice - 1];
+  clear();
+  return { currentUserResturant };
 };
+
+   const deleteResturant = (userId, resturants = []) => {
+    const 
+ 
+    }
+
 
 const handleResturantMenuOptions = (
   choice,
@@ -211,7 +223,8 @@ const handleResturantMenuOptions = (
       return createResturant(resturants);
       break;
     case "2":
-      switchResturant(currentLoggedInUser.id, resturants);
+      const res = switchResturant(currentLoggedInUser.id, resturants);
+      return res;
       break;
     case "3":
       return viewResturants(currentLoggedInUser.id, resturants);
@@ -280,7 +293,7 @@ function main() {
       console.log(`LoggedIn user email: ${currentLoggedInUser?.email}`);
 
       space();
-      console.log("-----Current Resturant-----");
+      console.log("Current Resturant");
       console.log(`Current Resturant id : ${currentUserResturant?.id}`);
       console.log(`Current Resturant name: ${currentUserResturant?.name}`);
 
@@ -299,7 +312,9 @@ function main() {
         currentLoggedInUser,
         resturants,
       );
-
+      if (response?.currentUserResturant) {
+        currentUserResturant = response.currentUserResturant;
+      }
       if (response?.resturant) {
         let resturant = {
           id: response.resturant.id,
